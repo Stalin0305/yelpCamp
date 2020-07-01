@@ -1,0 +1,50 @@
+<%- include('partials/header') %>
+
+<!-- <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Yelp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a class="nav-link" href="/">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+    
+</nav> -->
+
+
+<div class="container">
+    <header class="jumbotron">
+        <h1>Welcome to the campgrounds page</h1>
+        <p>View your handpicked campground from all over the world</p>
+        <p><a class="btn btn-primary" href="/campgrounds/new">Add a new campground</a></p>
+    </header>
+    <div class="row">
+        <% campground.forEach(function(camp){ %>
+        <div class="col-md-3 col-sm-6 ">
+            <figure>
+                <img class="img-fluid img-thumbnail" src="<%=camp.image %>">
+                <figcaption class="figure-caption text-center">
+                    <%= camp.name %>
+                    <p>
+                        <a class="btn btn-sm btn-primary" href="/campgrounds/<%=camp._id%>">More info</a>
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+    <% }); %>
+    </div>  
+
+
+</div>
+
+<!-- <h1>Campgrounds!!</h1> -->
+
+<%- include('partials/footer')%>
