@@ -3,19 +3,24 @@ var app=express();
 var bodyparser= require("body-parser");
 var jsonParser = bodyparser.json()
 var mongoose = require("mongoose");
+var campground=require('./models/campground');
+var ObjectId=require('mongo')
+var seedDb=require('./seed');
 
+seedDb();
 mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true });
 app.set("view engine", "ejs");
 app.use(bodyparser.urlencoded({ extended: true }));
 
-var campgroundSchema=new mongoose.Schema(
-    { name: String,
-      image: String,
-      description: String
-    }
-);
 
-var campground=mongoose.model("campground",campgroundSchema);
+// var campgroundSchema=new mongoose.Schema(
+//     { name: String,
+//       image: String,
+//       description: String
+//     }
+// );
+
+// var campground=mongoose.model("campground",campgroundSchema);
 
 // campground.create(
 //     {
@@ -83,12 +88,12 @@ app.get("/campgrounds/new",function(req,res){
 });
 
 app.get("/campgrounds/:id",function(req,res){
-    console.log(req.params.id);
-    campground.find({_id:req.params.id},function(err,foundCamp){
+    // console.log(req.params.id);
+    campground.find({_id:req.params.id}).populate("comments").exec(function(err,foundCamp){
         if(err){
             console.log(err);
         }else{
-            console.log(foundCamp.);
+            console.log(foundCamp);
             res.render('show',{camp:foundCamp});
         }
     });
