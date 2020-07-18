@@ -9,9 +9,10 @@ var ObjectId=require('mongo')
 var seedDb=require('./seed');
 const comment = require("./models/comment");
 
-seedDb();
+// seedDb();
 mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true });
 app.set("view engine", "ejs");
+// app.use(express.static(__dirname+"/public"));
 app.use(bodyparser.urlencoded({ extended: true }));
 
 

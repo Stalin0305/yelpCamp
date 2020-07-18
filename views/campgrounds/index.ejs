@@ -29,15 +29,13 @@
     <div class="row">
         <% campground.forEach(function(camp){ %>
         <div class="col-md-3 col-sm-6 ">
-            <figure>
-                <img class="img-fluid img-thumbnail" src="<%=camp.image %>">
-                <figcaption class="figure-caption text-center">
-                    <%= camp.name %>
-                    <p>
-                        <a class="btn btn-sm btn-primary" href="/campgrounds/<%=camp._id%>">More info</a>
-                    </p>
-                </figcaption>
-            </figure>
+            <div class="card">
+                <img  class="card-img-top" src="<%=camp.image %>" width="250" height="180" alt="">
+                <div class="card-body">
+                    <h5 class="card-title"><%= camp.name %></h5>
+                    <a class="btn btn-sm btn-primary" href="/campgrounds/<%=camp._id%>">More info</a>
+                </div>
+            </div>
         </div>
     <% }); %>
     </div>  
